@@ -1,3 +1,5 @@
 venv
-full ecom 5
 .idea
+**/__pycache__
+env
+**/migrations
