@@ -52,6 +52,10 @@
 
     <!-- Default CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/demo1.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}">
+
+    {% block self-css %}
+    {% endblock self-css %}
 
 </head>
 
@@ -59,6 +63,10 @@
 
     {% block body %}
     {% endblock body %}
+    
+    {% block self-js %}
+    	
+    {% endblock %}
 
     <!-- Plugin JS File -->
     <script data-cfasync="false" src="{% static '' %}../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{% static '' %}vendor/jquery/jquery.min.js"></script>
