@@ -7,7 +7,7 @@
 5. base
 6. components
 7. header
-8. footer
+8. footer-section
 9. demo
 */
 /* 1. color */
@@ -16351,7 +16351,7 @@ aside .sp-sidebar-banner span {
     min-width: 70rem;
   }
 }
-/* 8. footer */
+/* 8. footer-section */
 /*-------------------------------------
     Footer
         - Footer top
