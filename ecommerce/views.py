@@ -10,3 +10,13 @@ class ProductsListView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['greeting'] = 'Welcome to Our E-commerce Site!'
         return context
+
+
+class ProductView(TemplateView):
+    template_name = 'products/product.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['greeting'] = 'Welcome to product page'
+        return context
+

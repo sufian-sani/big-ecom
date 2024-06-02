@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/demo1.min.css' %}">
+    {% endblock css %}
+
     {% block body %}
     <div class="page-wrapper">
         <h1 class="d-none">Wolmart - Responsive Marketplace HTML Template</h1>
@@ -52,7 +57,7 @@
 
         <!-- Start of Footer -->
         
-        {% include 'footer-section.html' %}
+{#        {% include 'footer-section.html' %}#}
         <!-- End of Footer -->
     </div>
     <!-- End of Page-wrapper-->
