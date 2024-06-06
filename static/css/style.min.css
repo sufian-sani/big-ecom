@@ -15292,6 +15292,10 @@ body .product-popup {
   border-bottom: 1px solid #eee;
 }
 
+.header-bottom {
+  border-bottom: 1px solid #eee;
+}
+
 @media (max-width: 991px) {
   .header .main-nav {
     display: none;

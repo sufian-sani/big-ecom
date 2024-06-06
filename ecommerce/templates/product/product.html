@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %}
+
+    {% block css %}
+    {% endblock css %}
+
+    {% block body %}
+
+        <!-- Start of Main -->
+        <main class="main mb-10 pb-1">
+
+            <!-- Start of Breadcrumb -->
+            {% include 'product/include-product-page-element/header-navication.html' %}
+            <!-- End of Breadcrumb -->
+
+            <!-- Start of Page Content -->
+            <div class="page-content">
+                <div class="container">
+                    <div class="row gutter-lg">
+                        {% include 'product/include-product-page-element/main-container.html' %}
+                        <!-- End of Main Content -->
+                        {% include 'product/include-product-page-element/sidebar.html' %}
+                        <!-- End of Sidebar -->
+                    </div>
+                </div>
+            </div>
+            <!-- End of Page Content -->
+
+        </main>
+
+        {% block js %}
+        {% endblock js %}
+    {% endblock body %}

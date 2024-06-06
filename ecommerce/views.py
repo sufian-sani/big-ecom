@@ -13,7 +13,7 @@ class ProductsListView(TemplateView):
 
 
 class ProductView(TemplateView):
-    template_name = 'products/product.html'
+    template_name = 'product/product.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
