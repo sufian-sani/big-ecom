@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title products</title>
+</head>
+<body>
+    <h1>Products</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <a href="{% url 'ecommerce:product' product.id %}">
+                <h2>{{ product.name }}</h2>
+            </a>
+            <p>{{ product.description }}</p>
+            <p>{{ product.categories.all.0 }}</p>
+            <p>{{ product.set_product_variant }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

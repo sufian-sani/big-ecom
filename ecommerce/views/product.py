@@ -1,9 +1,14 @@
 from django.views.generic.detail import DetailView
-from ..models.product_models import *
+from ..models.product_models import Product
 class ProductView(DetailView):
     model = Product
-    template_name = 'product/product.html'
+    template_name = 'test/product.html'
+    context_object_name = 'product'
 
+    # def get_object(self, queryset=None):
+    #     # slug = Product.objects.get(self.kwargs.get('id'))
+    #     slug = 'slugsldkd'
+    #     return slug
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # context['greeting'] = 'Welcome to product page'
