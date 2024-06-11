@@ -14,7 +14,9 @@
             </a>
             <p>{{ product.description }}</p>
             <p>{{ product.categories.all.0 }}</p>
-            <p>{{ product.set_product_variant }}</p>
+            <p>{{ product.price }}</p>
+            <p>{{ product.productimage_set.all.0 }}</p>
+            <img src="{{ product.productimage_set.all.0.image.url }}">
         </li>
         {% endfor %}
     </ul>

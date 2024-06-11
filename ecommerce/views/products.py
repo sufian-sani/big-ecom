@@ -6,11 +6,12 @@ from ..models.product_models import Product
 
 class ProductsListView(ListView):
     model = Product
-    template_name = 'test/products.html'
+    template_name = 'products/products.html'
+    # template_name = 'test/products.html'
     context_object_name = 'products'
 
     def get_queryset(self):
-        queryset = Product.objects.all().prefetch_related('productvariant_set', 'productspecification_set')
+        queryset = Product.objects.all().prefetch_related('productvariant_set', 'productspecification_set','productimage_set')
         # breakpoint()
         return queryset
 

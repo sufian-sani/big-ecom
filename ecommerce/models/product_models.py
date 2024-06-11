@@ -24,6 +24,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     categories = models.ManyToManyField(Category)
     is_active = models.BooleanField(default=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -40,11 +41,11 @@ class ProductVariant(models.Model):
         return f'{self.sku} + {self.product}'
 
 class ProductImage(models.Model):
-    product_variant = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/')
 
     def __str__(self):
-        return f'{self.product_variant}'
+        return f'{self.product}'
 
 class ProductSpecification(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
