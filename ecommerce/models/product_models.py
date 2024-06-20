@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 class Color(models.Model):
     name = models.CharField(max_length=255)
@@ -21,10 +22,11 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
+    description = HTMLField(blank=True, null=True)
     categories = models.ManyToManyField(Category)
     is_active = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    sku = models.CharField(max_length=255, unique=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -49,11 +51,11 @@ class ProductImage(models.Model):
 
 class ProductSpecification(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    key = models.CharField(max_length=255)
     value = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'{self.product} {self.name}'
+        return f'{self.product} {self.key}'
 
 class ProductFeature(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

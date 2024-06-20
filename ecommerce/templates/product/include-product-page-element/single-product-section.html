@@ -9,34 +9,15 @@
                     }
                 }">
                     <div class="swiper-wrapper row cols-1 gutter-no">
-                        <div class="swiper-slide">
-                            <figure class="product-image">
-                                <img src="{% static '' %}images/products/variable/1-800x900.jpg"
-                                    data-zoom-image="{% static '' %}images/products/variable/1-800x900.jpg"
-                                    alt="Electronics Black Wrist Watch" width="800" height="900">
-                            </figure>
-                        </div>
-                        <div class="swiper-slide">
-                            <figure class="product-image">
-                                <img src="{% static '' %}images/products/variable/2-800x900.jpg"
-                                    data-zoom-image="{% static '' %}images/products/variable/2-800x900.jpg"
-                                    alt="Electronics Black Wrist Watch" width="488" height="549">
-                            </figure>
-                        </div>
-                        <div class="swiper-slide">
-                            <figure class="product-image">
-                                <img src="{% static '' %}images/products/variable/3-800x900.jpg"
-                                    data-zoom-image="{% static '' %}images/products/variable/3-800x900.jpg"
-                                    alt="Electronics Black Wrist Watch" width="800" height="900">
-                            </figure>
-                        </div>
-                        <div class="swiper-slide">
-                            <figure class="product-image">
-                                <img src="{% static '' %}images/products/variable/4-800x900.jpg"
-                                    data-zoom-image="{% static '' %}images/products/variable/4-800x900.jpg"
-                                    alt="Electronics Black Wrist Watch" width="800" height="900">
-                            </figure>
-                        </div>
+                        {% for image in product.productimage_set.all %}
+                            <div class="swiper-slide">
+                                <figure class="product-image">
+                                    <img src="{{ image.image.url }}"
+                                        data-zoom-image="{{ image.image.url }}"
+                                        alt="Electronics Black Wrist Watch" width="800" height="900">
+                                </figure>
+                            </div>
+                        {% endfor %}
                     </div>
                     <button class="swiper-button-next"></button>
                     <button class="swiper-button-prev"></button>
@@ -49,22 +30,24 @@
                     }
                 }">
                     <div class="product-thumbs swiper-wrapper row cols-4 gutter-sm">
-                        <div class="product-thumb swiper-slide">
-                            <img src="{% static '' %}images/products/variable/1-800x900.jpg"
-                                alt="Product Thumb" width="800" height="900">
-                        </div>
-                        <div class="product-thumb swiper-slide">
-                            <img src="{% static '' %}images/products/variable/2-800x900.jpg"
-                                alt="Product Thumb" width="800" height="900">
-                        </div>
-                        <div class="product-thumb swiper-slide">
-                            <img src="{% static '' %}images/products/variable/3-800x900.jpg"
-                                alt="Product Thumb" width="800" height="900">
-                        </div>
-                        <div class="product-thumb swiper-slide">
-                            <img src="{% static '' %}images/products/variable/4-800x900.jpg"
-                                alt="Product Thumb" width="800" height="900">
-                        </div>
+                        {% for image in product.productimage_set.all %}
+                            <div class="product-thumb swiper-slide">
+                                <img src="{{ image.image.url }}"
+                                    alt="Product Thumb" width="800" height="900">
+                            </div>
+                        {% endfor %}
+{#                        <div class="product-thumb swiper-slide">#}
+{#                            <img src="{% static '' %}images/products/variable/2-800x900.jpg"#}
+{#                                alt="Product Thumb" width="800" height="900">#}
+{#                        </div>#}
+{#                        <div class="product-thumb swiper-slide">#}
+{#                            <img src="{% static '' %}images/products/variable/3-800x900.jpg"#}
+{#                                alt="Product Thumb" width="800" height="900">#}
+{#                        </div>#}
+{#                        <div class="product-thumb swiper-slide">#}
+{#                            <img src="{% static '' %}images/products/variable/4-800x900.jpg"#}
+{#                                alt="Product Thumb" width="800" height="900">#}
+{#                        </div>#}
                     </div>
                     <button class="swiper-button-next"></button>
                     <button class="swiper-button-prev"></button>
@@ -73,7 +56,7 @@
         </div>
         <div class="col-md-6 mb-6 mb-md-8">
             <div class="product-details" data-sticky-options="{'minWidth': 767}">
-                <h1 class="product-title">3D Television</h1>
+                <h1 class="product-title">{{ product.name }}</h1>
                 <div class="product-bm-wrapper">
                     <figure class="brand">
                         <img src="{% static '' %}images/products/brand/brand-2.jpg" alt="Brand"
@@ -82,10 +65,10 @@
                     <div class="product-meta">
                         <div class="product-categories">
                             Category:
-                            <span class="product-category"><a href="#">Electronics</a></span>
+                            <span class="product-category"><a href="#">{{ product.categories.all.0 }}</a></span>
                         </div>
                         <div class="product-sku">
-                            SKU: <span>MS46891340</span>
+                            SKU: <span>{{ product.sku }}</span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +76,7 @@
                 <hr class="product-divider">
 
                 <div class="product-price">
-                    <ins class="new-price">$210.00 - $230.00</ins>
+                    <ins class="new-price">$ {{ product.price }}</ins>
                 </div>
 
                 <div class="ratings-container">
@@ -106,9 +89,9 @@
 
                 <div class="product-short-desc">
                     <ul class="list-type-check list-style-none">
-                        <li>Ultrices eros in cursus turpis massa cursus mattis.</li>
-                        <li>Volutpat ac tincidunt vitae semper quis lectus.</li>
-                        <li>Aliquam id diam maecenas ultricies mi eget mauris.</li>
+                        {% for feature in product.productfeature_set.all %}
+                            <li>{{ feature.feature }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
 
@@ -117,20 +100,17 @@
                 <div class="product-form product-variation-form product-color-swatch">
                     <label>Color:</label>
                     <div class="d-flex align-items-center product-variations">
-                        <a href="#" class="color" style="background-color: #ffcc01"></a>
-                        <a href="#" class="color" style="background-color: #ca6d00;"></a>
-                        <a href="#" class="color" style="background-color: #1c93cb;"></a>
-                        <a href="#" class="color" style="background-color: #ccc;"></a>
-                        <a href="#" class="color" style="background-color: #333;"></a>
+                        {% for color in product.productvariant_set.all %}
+                            <a href="#" class="color" style="background-color: {{ color.color }};"></a>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="product-form product-variation-form product-size-swatch">
                     <label class="mb-1">Size:</label>
                     <div class="flex-wrap d-flex align-items-center product-variations">
-                        <a href="#" class="size">Small</a>
-                        <a href="#" class="size">Medium</a>
-                        <a href="#" class="size">Large</a>
-                        <a href="#" class="size">Extra Large</a>
+                        {% for size in product.productvariant_set.all %}
+                            <a href="#" class="size">{{ size.size }}</a>
+                        {% endfor %}
                     </div>
                     <a href="#" class="product-variation-clean">Clean All</a>
                 </div>
@@ -196,75 +176,16 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="product-tab-description">
-                <div class="row mb-4">
-                    <div class="col-md-6 mb-5">
-                        <h4 class="title tab-pane-title font-weight-bold mb-2">Detail</h4>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt arcu cursus vitae congue mauris.
-                            Sagittis id consectetur purus ut. Tellus rutrum tellus pelle Vel
-                            pretium lectus quam id leo in vitae turpis massa.</p>
-                        <ul class="list-type-check">
-                            <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis
-                                elit.
-                            </li>
-                            <li>Vivamus finibus vel mauris ut vehicula.</li>
-                            <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <div class="banner banner-video product-video br-xs">
-                            <figure class="banner-media">
-                                <a href="#">
-                                    <img src="{% static '' %}images/products/video-banner-610x300.jpg"
-                                        alt="banner" width="610" height="300"
-                                        style="background-color: #bebebe;">
-                                </a>
-                                <a class="btn-play-video btn-iframe"
-                                    href="{% static '' %}video/memory-of-a-woman.mp4"></a>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <div class="row cols-md-3">
-                    <div class="mb-3">
-                        <h5 class="sub-title font-weight-bold"><span class="mr-3">1.</span>Free
-                            Shipping &amp; Return</h5>
-                        <p class="detail pl-5">We offer free shipping for products on orders
-                            above 50$ and offer free delivery for all orders in US.</p>
-                    </div>
-                    <div class="mb-3">
-                        <h5 class="sub-title font-weight-bold"><span>2.</span>Free and Easy
-                            Returns</h5>
-                        <p class="detail pl-5">We guarantee our products and you could get back
-                            all of your money anytime you want in 30 days.</p>
-                    </div>
-                    <div class="mb-3">
-                        <h5 class="sub-title font-weight-bold"><span>3.</span>Special Financing
-                        </h5>
-                        <p class="detail pl-5">Get 20%-50% off items over 50$ for a month or
-                            over 250$ for a year with our special credit card.</p>
-                    </div>
-                </div>
+                <div>Description: {{ product.description|safe }}</div>
             </div>
             <div class="tab-pane" id="product-tab-specification">
                 <ul class="list-none">
-                    <li>
-                        <label>Model</label>
-                        <p>Skysuite 320</p>
-                    </li>
-                    <li>
-                        <label>Color</label>
-                        <p>Black</p>
-                    </li>
-                    <li>
-                        <label>Size</label>
-                        <p>Large, Small</p>
-                    </li>
-                    <li>
-                        <label>Guarantee Time</label>
-                        <p>3 Months</p>
-                    </li>
+                    {% for specification in product.productspecification_set.all %}
+                        <li>
+                            <label>{{ specification.key }}</label>
+                            <p>{{ specification.value }}</p>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="tab-pane" id="product-tab-vendor">

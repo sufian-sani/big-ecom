@@ -6,7 +6,32 @@
 <body>
     <h1>Product All Data</h1>
     <ul>
-        <li></li>
+        <li>Product Name: {{ product.name }}</li>
+        <li>Category : {{ product.categories.all.0 }}</li>
+        <li>SKU : {{ product.sku }}</li>
+        <li>Price : {{ product.price }}</li>
+        <b>Product Feature:</b>
+        {% for feature in product.productfeature_set.all %}
+            <li>{{ feature.feature }}</li>
+        {% endfor %}
+        <b>Color:</b>
+        {% for color in product.productvariant_set.all %}
+            <li>{{ color.color }}</li>
+        {% endfor %}
+        <b>Size:</b>
+        {% for size in product.productvariant_set.all %}
+            <li>{{ size.size }}</li>
+        {% endfor %}
+        <p>Description: {{ product.description }}</p>
+        {% for specification in product.productspecification_set.all %}
+            <li>{{ specification.key }}: {{ specification.value }}</li>
+        {% endfor %}
+        <b>Image:</b>
+        {% for image in product.productimage_set.all %}
+            <img src="{{ image.image.url }}"/>
+        {% endfor %}
+
+
     </ul>
 
 </body>
