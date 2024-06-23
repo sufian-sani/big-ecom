@@ -1,4 +1,5 @@
 __all__ = [
     "product",
-	"products"
+	"products",
+	"cart"
 ]
