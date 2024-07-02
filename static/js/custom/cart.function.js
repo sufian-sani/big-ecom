@@ -5,6 +5,8 @@ $(document).ready(function() {
          const productName = $button.data('name');
          const productPrice = $button.data('price');
          const productImage = $button.data('image');
+         const quantityProduct =  $(".product-form .quantity").val()
+        console.log(quantityProduct)
          let cart = JSON.parse(localStorage.getItem('cart')) || [];
          const productIndex = cart.findIndex(product => product.id == productId);
          if (productIndex !== -1) {
@@ -65,6 +67,7 @@ $(document).ready(function() {
             let totalAmount = `$${total}`
             $(".cart-subtotal > span").text(totalAmount);
             $(".order-total > span").text(totalAmount);
+            // -------------------
             // const cartSubTotal = document.getElementsByClassName('cart-subtotal');
             // console.log(cartSubTotal)
             // cartSubTotal.innerText = ('dkshdkshd');
