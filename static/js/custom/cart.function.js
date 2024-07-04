@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     $(".cart-product-section").on("click",function(){
          const $button = $(this);
@@ -9,7 +8,7 @@ $(document).ready(function() {
          const quantityProduct =  $(".product-form .quantity").val()
          let cart = JSON.parse(localStorage.getItem('cart')) || [];
          const productIndex = cart.findIndex(product => product.id == productId);
-        console.log('hdgjsghdj')
+        // console.log('hdgjsghdj')
          if (productIndex !== -1) {
               cart[productIndex].quantity += 1;
           } else {
