@@ -3,4 +3,5 @@ __all__ = [
 	"products",
 	"cart",
 	"checkout",
+	"order_complete",
 ]

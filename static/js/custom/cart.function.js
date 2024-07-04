@@ -1,18 +1,19 @@
+
 $(document).ready(function() {
-    $(".btn-cart").click(function(){
+    $(".cart-product-section").on("click",function(){
          const $button = $(this);
          const productId = $button.data('id');
          const productName = $button.data('name');
          const productPrice = $button.data('price');
          const productImage = $button.data('image');
          const quantityProduct =  $(".product-form .quantity").val()
-        console.log(quantityProduct)
          let cart = JSON.parse(localStorage.getItem('cart')) || [];
          const productIndex = cart.findIndex(product => product.id == productId);
+        console.log('hdgjsghdj')
          if (productIndex !== -1) {
               cart[productIndex].quantity += 1;
           } else {
-              cart.push({ id: productId, name: productName, price: parseFloat(productPrice), image: productImage, quantity: 1 });
+              cart.push({ id: productId, name: productName, price: parseFloat(productPrice), image: productImage, quantity: productIndex });
           }
          localStorage.setItem('cart', JSON.stringify(cart));
     });
